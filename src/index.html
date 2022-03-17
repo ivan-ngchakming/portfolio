@@ -15,16 +15,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="styles.scss" />
   <script defer src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
-  
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVTZNR8GXZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <script src="analytics.js"></script>
 
-    gtag('config', 'G-MVTZNR8GXZ');
-  </script>
 </head>
 
 <body>
@@ -76,6 +71,7 @@
                   target="_blank"
                   class="cta-btn cta-btn--resume"
                   href="./assets/resume.pdf"
+                  onclick="trackResumeDownload();"
                 >
                   View Resume
                 </a>
@@ -106,6 +102,7 @@
               </div>
               <a rel="noreferrer" target="_blank" class="cta-btn cta-btn--hero"
                 href="https://github.com/ivan-ngchakming/Facial-Recognition-Database-Management-System"
+                onclick="track('FRDMS', 'source')"
               >
                 Source Code
               </a>
@@ -113,7 +110,12 @@
           </div>
           <div class="col-lg-8 col-sm-12">
             <div class="project-wrapper__image load-hidden">
-              <a rel="noreferrer" href="https://github.com/ivan-ngchakming/Facial-Recognition-Database-Management-System" target="_blank">
+              <a 
+                rel="noreferrer" 
+                href="https://github.com/ivan-ngchakming/Facial-Recognition-Database-Management-System" 
+                target="_blank"
+                onclick="track('FRDMS', 'image')"
+              >
                 <div data-tilt data-tilt-max="4" data-tilt-glare="true" data-tilt-max-glare="0.5" class="thumbnail rounded js-tilt">
                   <img 
                     alt="Project Image" 
@@ -139,7 +141,13 @@
                   the my development process on Meduim <a href="https://medium.com/@ivan.ng.chak.ming/crm-the-portfolio-project-idea-952dbdcb0255" rel="noreferrer" target="_blank">here</a> 
                 </p>
               </div>
-              <a rel="noreferrer" target="_blank" class="cta-btn cta-btn--hero" href="https://artist-crm.ivan0313.tk/#/customers">
+              <a
+                rel="noreferrer"
+                target="_blank"
+                class="cta-btn cta-btn--hero"
+                href="https://artist-crm.ivan0313.tk/#/customers"
+                onclick="track('ArtistCRM', 'live')"
+              >
                 See Live
               </a>
               <a 
@@ -147,6 +155,7 @@
                 target="_blank" 
                 class="cta-btn text-color-main" 
                 href="https://github.com/ivan-ngchakming/artist-crm-web"
+                onclick="track('ArtistCRM', 'source')"
               >
                 Source Code
               </a>
@@ -154,7 +163,9 @@
           </div>
           <div class="col-lg-8 col-sm-12">
             <div class="project-wrapper__image load-hidden">
-              <a rel="noreferrer" href="https://artist-crm.ivan0313.tk/#/customers" target="_blank">
+              <a rel="noreferrer" href="https://artist-crm.ivan0313.tk/#/customers" target="_blank"
+                onclick="track('ArtistCRM', 'image')"
+              >
                 <div data-tilt data-tilt-max="4" data-tilt-glare="true" data-tilt-max-glare="0.5" class="thumbnail rounded js-tilt">
                   <img 
                     alt="Project Image" 
@@ -181,7 +192,9 @@
                   Login using demo@gmail.com as username and demo1234 as password. 
                 </p>
               </div>
-              <a rel="noreferrer" target="_blank" class="cta-btn cta-btn--hero" href="https://facebook-messenger-clone-ea9b1.web.app">
+              <a rel="noreferrer" target="_blank" class="cta-btn cta-btn--hero" href="https://facebook-messenger-clone-ea9b1.web.app"
+                onclick="track('messenger', 'live')"
+              >
                 See Live
               </a>
               <a 
@@ -189,6 +202,7 @@
                 target="_blank" 
                 class="cta-btn text-color-main" 
                 href="https://github.com/ivan-ngchakming/messenger"
+                onclick="track('messenger', 'source')"
               >
                 Source Code
               </a>
@@ -196,7 +210,9 @@
           </div>
           <div class="col-lg-8 col-sm-12">
             <div class="project-wrapper__image load-hidden">
-              <a rel="noreferrer" href="https://facebook-messenger-clone-ea9b1.web.app" target="_blank">
+              <a rel="noreferrer" href="https://facebook-messenger-clone-ea9b1.web.app" target="_blank"
+                onclick="track('messenger', 'image')"
+              >
                 <div data-tilt data-tilt-max="4" data-tilt-glare="true" data-tilt-max-glare="0.5" class="thumbnail rounded js-tilt">
                   <img 
                     alt="Project Image" 
@@ -223,6 +239,7 @@
               </div>
               <a rel="noreferrer" target="_blank" class="cta-btn cta-btn--hero" 
                 href="https://github.com/ivan-ngchakming/Intelligent-Know-Your-Customer"
+                onclick="track('IKYC', 'source')"
               ">
                 Source Code
               </a>
@@ -230,7 +247,9 @@
           </div>
           <div class="col-lg-8 col-sm-12">
             <div class="project-wrapper__image load-hidden">
-              <a rel="noreferrer" href="https://github.com/ivan-ngchakming/Intelligent-Know-Your-Customer" target="_blank">
+              <a rel="noreferrer" href="https://github.com/ivan-ngchakming/Intelligent-Know-Your-Customer" target="_blank"
+                onclick="track('IKYC', 'image')"
+              >
                 <div data-tilt data-tilt-max="4" data-tilt-glare="true" data-tilt-max-glare="0.5" class="thumbnail rounded js-tilt">
                   <img 
                     alt="Project Image" 
@@ -269,10 +288,10 @@
           <i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>
         </a>
         <div class="social-links">
-          <a rel="noreferrer" href="https://github.com/ivan-ngchakming" target="_blank">
+          <a rel="noreferrer" href="https://github.com/ivan-ngchakming" target="_blank" onclick="trackSocial('github');">
             <i class="fa fa-github fa-inverse"></i>
           </a>
-          <a rel="noreferrer" href="https://medium.com/@ivan.ng.chak.ming" target="_blank">
+          <a rel="noreferrer" href="https://medium.com/@ivan.ng.chak.ming" target="_blank" onclick="trackSocial('medium');">
             <i class="fa fa-medium fa-inverse"></i>
           </a>
           <!-- <a rel="noreferrer" href="https://www.linkedin.com/in/ng-c-a70488124/" target="_blank">
