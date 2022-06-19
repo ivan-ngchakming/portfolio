@@ -25,7 +25,7 @@ const Intro = () => {
           "font-bold",
           "text-4xl",
           "sm:text-6xl",
-          "mb-2"
+          "mb-8"
         )}
       >
         I build things for the web.
