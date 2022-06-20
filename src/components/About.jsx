@@ -1,19 +1,7 @@
 import cn from "classnames";
 import PageContainer from "./common/PageContainer";
-
-const Paragraph = ({ children }) => (
-  <p
-    className={cn(
-      "font-sans",
-      "text-base",
-      "font-medium",
-      "text-slate-400",
-      "mb-6"
-    )}
-  >
-    {children}
-  </p>
-);
+import Title from "./common/Title";
+import Paragraph from "./common/Paragraph";
 
 const About = () => {
   return (
@@ -21,42 +9,7 @@ const About = () => {
       id="about"
       className={cn("flex", "flex-col", "items-center")}
     >
-      <div
-        className={cn(
-          "flex",
-          "items-center",
-          "justify-start",
-          "w-full",
-          "mb-10",
-          "sm:px-12"
-        )}
-      >
-        <h2
-          className={cn(
-            "text-2xl",
-            "text-slate-400",
-            "font-sans",
-            "font-bold",
-            "min-w-fit"
-          )}
-        >
-          <span className={cn("text-brightred", "font-mono", "text-base")}>
-            01.
-          </span>{" "}
-          About Me{" "}
-        </h2>
-        <span
-          className={cn(
-            "border-b-[0.1px]",
-            "border-slate-600",
-            "h-[1px]",
-            // "min-w-full",
-            "grow",
-            "sm:w-40",
-            "ml-8"
-          )}
-        ></span>
-      </div>
+      <Title n={1} title="About Me" />
       <div className="sm:flex">
         <div className={cn("sm:mr-8", "mb-8", "sm:mb-0", "sm:max-w-lg")}>
           <Paragraph>
