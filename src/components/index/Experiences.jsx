@@ -1,7 +1,55 @@
-import React, { useState } from "react"
+import React, { useMemo, useState } from "react"
 import cn from "classnames"
 import PageContainer from "../common/PageContainer"
 import Title from "../common/Title"
+import { useStaticQuery, graphql } from "gatsby"
+import { differenceInDays } from "date-fns"
+
+const MONTH_NAMES = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+]
+
+const getMonthName = date => MONTH_NAMES[date.getMonth()]
+
+const renderDateRange = (start, end) => {
+  const startDate = new Date(start)
+  const endDate = new Date(end)
+
+  if (differenceInDays(endDate, new Date()) > 0) {
+    return (
+      getMonthName(startDate) + " " + startDate.getFullYear() + " - current"
+    )
+  }
+  if (startDate.getFullYear() === endDate.getFullYear()) {
+    return (
+      getMonthName(startDate) +
+      " - " +
+      getMonthName(endDate) +
+      " " +
+      startDate.getFullYear()
+    )
+  }
+  return (
+    getMonthName(startDate) +
+    " " +
+    startDate.getFullYear() +
+    " - " +
+    getMonthName(endDate) +
+    " " +
+    endDate.getFullYear()
+  )
+}
 
 const TabButton = ({ children, isActive, ...props }) => {
   return (
@@ -25,42 +73,85 @@ const TabButton = ({ children, isActive, ...props }) => {
 }
 
 const Experiences = () => {
-  const [activeTab, setActiveTab] = useState(0)
+  const {
+    allMarkdownRemark: { edges },
+  } = useStaticQuery(graphql`
+    query ExperiencesComponentQuery {
+      allMarkdownRemark(
+        filter: { frontmatter: { featuredExperience: { eq: true } } }
+        sort: { order: DESC, fields: frontmatter___startDate }
+      ) {
+        edges {
+          node {
+            id
+            frontmatter {
+              companyName
+              companyUrl
+              description
+              endDate
+              featuredExperience
+              jobTitle
+              startDate
+              templateKey
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const [activeTab, setActiveTab] = useState(edges[0].node.id)
+
+  const activeEntry = useMemo(
+    () => edges.find(node => node.node.id === activeTab).node,
+    [activeTab, edges]
+  )
+
+  const tabIndex = useMemo(() => {
+    return edges.map(edge => edge.node.id).indexOf(activeTab)
+  }, [activeTab, edges])
 
   return (
     <PageContainer
-      id="about"
+      id="experiences"
       className={cn("flex", "flex-col", "items-center")}
     >
       <Title n={2} title="Where I've Worked" />
-      <div className={cn("w-full", "sm:flex")}>
+      <div
+        className={cn(
+          "flex",
+          "flex-col",
+          "sm:flex-row",
+          "items-center",
+          "sm:items-start",
+          "w-screen",
+          "sm:w-[700px]",
+          "sm:flex",
+          "sm:min-h-[400px]"
+        )}
+      >
         <div
           className={cn(
             "flex",
             "overflow-auto",
-            "sm:overflow-visible",
-            "w-full",
-            "sm:w-[140px]",
+            "w-[90vw]",
             "pb-1",
             "relative",
+            "sm:overflow-visible",
+            "sm:min-w-[140px]",
+            "sm:max-w-[140px]",
             "sm:flex-col"
           )}
         >
-          <TabButton isActive={activeTab === 0} onClick={() => setActiveTab(0)}>
-            Oursky
-          </TabButton>
-          <TabButton isActive={activeTab === 1} onClick={() => setActiveTab(1)}>
-            Bowtie
-          </TabButton>
-          <TabButton isActive={activeTab === 2} onClick={() => setActiveTab(2)}>
-            Grahpen
-          </TabButton>
-          <TabButton isActive={activeTab === 3} onClick={() => setActiveTab(3)}>
-            Prudential
-          </TabButton>
-          <TabButton isActive={activeTab === 4} onClick={() => setActiveTab(4)}>
-            SunLife
-          </TabButton>
+          {edges.map(({ node }) => (
+            <TabButton
+              key={node.id}
+              isActive={activeTab === node.id}
+              onClick={() => setActiveTab(node.id)}
+            >
+              {node.frontmatter.companyName}
+            </TabButton>
+          ))}
           <div
             className={cn(
               "absolute",
@@ -73,7 +164,9 @@ const Experiences = () => {
               "duration-300",
               "sm:hidden"
             )}
-            style={{ transform: `translateX(${activeTab * 120}px)` }}
+            style={{
+              transform: `translateX(${tabIndex * 120}px)`,
+            }}
           />
           <div
             className={cn(
@@ -88,7 +181,7 @@ const Experiences = () => {
               "sm:block"
             )}
             style={{
-              transform: `translateY(${activeTab * 40}px)`,
+              transform: `translateY(${tabIndex * 40}px)`,
             }}
           />
           <div
@@ -103,7 +196,19 @@ const Experiences = () => {
             )}
           />
         </div>
-        <div className={cn("grow", "sm:ml-7", "mt-4", "sm:mt-0")}>
+
+        <div
+          className={cn(
+            "grow",
+            "w-screen",
+            "sm:w-auto",
+            "mx-0",
+            "px-8",
+            "sm:ml-7",
+            "mt-4",
+            "sm:mt-0"
+          )}
+        >
           <h3
             className={cn(
               "font-sans",
@@ -112,8 +217,8 @@ const Experiences = () => {
               "text-xl"
             )}
           >
-            Software Engineer{" "}
-            <a href="/#">
+            {activeEntry.frontmatter.jobTitle}{" "}
+            <a href={activeEntry.frontmatter.companyUrl}>
               <span className={cn("text-brightred")}>
                 @
                 <span
@@ -130,14 +235,22 @@ const Experiences = () => {
                     "after:bottom-0"
                   )}
                 >
-                  Oursky
+                  {activeEntry.frontmatter.companyName}
                 </span>
               </span>
             </a>
           </h3>
           <h4 className={cn("font-mono", "text-slate-400")}>
-            June - September 2022
+            {renderDateRange(
+              activeEntry.frontmatter.startDate,
+              activeEntry.frontmatter.endDate
+            )}
           </h4>
+          <p
+            className={cn("font-sans", "font-normal", "text-slate-400", "mt-4")}
+          >
+            {activeEntry.frontmatter.description}
+          </p>
         </div>
       </div>
     </PageContainer>

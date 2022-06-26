@@ -4,7 +4,7 @@ import PageContainer from "../common/PageContainer"
 
 const Work = () => {
   return (
-    <PageContainer id="working">
+    <PageContainer id="work">
       <h2
         className={cn("text-2xl", "text-slate-400", "font-sans", "font-bold")}
       >
