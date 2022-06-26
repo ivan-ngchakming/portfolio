@@ -113,7 +113,7 @@ const Experiences = () => {
             )}
           >
             Software Engineer{" "}
-            <a href="#">
+            <a href="/#">
               <span className={cn("text-brightred")}>
                 @
                 <span

@@ -1,5 +1,5 @@
 import cn from "classnames"
-import React, { useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"
 import { VscDebugBreakpointDataUnverified } from "react-icons/vsc"
 import Button from "./Button"
@@ -27,16 +27,19 @@ const Navbar = () => {
 
   const show = y < 100 || isScrollingUp
 
-  const handleScroll = e => {
-    const window = e.currentTarget
+  const handleScroll = useCallback(
+    e => {
+      const window = e.currentTarget
 
-    if (y > window.scrollY) {
-      setIsScrollingUp(true)
-    } else {
-      setIsScrollingUp(false)
-    }
-    setY(window.scrollY)
-  }
+      if (y > window.scrollY) {
+        setIsScrollingUp(true)
+      } else {
+        setIsScrollingUp(false)
+      }
+      setY(window.scrollY)
+    },
+    [y]
+  )
 
   const handleClick = () => {
     setIsScrollingUp(false)
@@ -50,7 +53,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll)
     }
-  }, [y])
+  }, [y, handleScroll])
 
   return (
     <>
