@@ -1,5 +1,6 @@
-import cn from "classnames";
-import PageContainer from "./common/PageContainer";
+import React from "react"
+import cn from "classnames"
+import PageContainer from "../common/PageContainer"
 
 const Work = () => {
   return (
@@ -11,7 +12,7 @@ const Work = () => {
         Things I've Built
       </h2>
     </PageContainer>
-  );
-};
+  )
+}
 
-export default Work;
+export default Work

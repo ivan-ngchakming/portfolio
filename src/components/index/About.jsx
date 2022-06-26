@@ -1,7 +1,9 @@
-import cn from "classnames";
-import PageContainer from "./common/PageContainer";
-import Title from "./common/Title";
-import Paragraph from "./common/Paragraph";
+import React from "react"
+import cn from "classnames"
+import PageContainer from "../common/PageContainer"
+import Title from "../common/Title"
+import Paragraph from "../common/Paragraph"
+import MeImg from "../../images/me.jpg"
 
 const About = () => {
   return (
@@ -54,7 +56,8 @@ const About = () => {
         </div>
         <div className="flex justify-center items-center relative">
           <img
-            src="/me.jpg"
+            src={MeImg}
+            alt="my face"
             className="max-w-xs w-72 h-72 object-cover rounded-md"
           />
           <div
@@ -74,7 +77,7 @@ const About = () => {
         </div>
       </div>
     </PageContainer>
-  );
-};
+  )
+}
 
-export default About;
+export default About

@@ -1,6 +1,7 @@
-import cn from "classnames";
-import Button from "./common/Button";
-import PageContainer from "./common/PageContainer";
+import React from "react"
+import cn from "classnames"
+import Button from "../common/Button"
+import PageContainer from "../common/PageContainer"
 
 const Intro = () => {
   return (
@@ -48,7 +49,7 @@ const Intro = () => {
 
       <Button className={cn("mt-4")}>Action</Button>
     </PageContainer>
-  );
-};
+  )
+}
 
-export default Intro;
+export default Intro

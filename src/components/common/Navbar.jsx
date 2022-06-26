@@ -1,10 +1,10 @@
-import cn from "classnames";
-import { useEffect, useState } from "react";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { VscDebugBreakpointDataUnverified } from "react-icons/vsc";
-import Button from "./common/Button";
-import IconButton from "./common/IconButton";
-import { Transition } from "@headlessui/react";
+import cn from "classnames"
+import React, { useEffect, useState } from "react"
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"
+import { VscDebugBreakpointDataUnverified } from "react-icons/vsc"
+import Button from "./Button"
+import IconButton from "./IconButton"
+import { Transition } from "@headlessui/react"
 
 const NavItem = ({ children, href, className, ...props }) => (
   <li
@@ -18,39 +18,39 @@ const NavItem = ({ children, href, className, ...props }) => (
   >
     <a href={href}>{children}</a>
   </li>
-);
+)
 
 const Navbar = () => {
-  const [y, setY] = useState(0);
-  const [isScrollingUp, setIsScrollingUp] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [y, setY] = useState(0)
+  const [isScrollingUp, setIsScrollingUp] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  const show = y < 100 || isScrollingUp;
+  const show = y < 100 || isScrollingUp
 
-  const handleScroll = (e) => {
-    const window = e.currentTarget;
+  const handleScroll = e => {
+    const window = e.currentTarget
 
     if (y > window.scrollY) {
-      setIsScrollingUp(true);
+      setIsScrollingUp(true)
     } else {
-      setIsScrollingUp(false);
+      setIsScrollingUp(false)
     }
-    setY(window.scrollY);
-  };
+    setY(window.scrollY)
+  }
 
   const handleClick = () => {
-    setIsScrollingUp(false);
-    setIsMobileMenuOpen(false);
-  };
+    setIsScrollingUp(false)
+    setIsMobileMenuOpen(false)
+  }
 
-  const downloadResume = () => {};
+  const downloadResume = () => {}
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [y]);
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [y])
 
   return (
     <>
@@ -108,7 +108,7 @@ const Navbar = () => {
         </Button>
         <IconButton
           className={cn("sm:hidden")}
-          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          onClick={() => setIsMobileMenuOpen(prev => !prev)}
         >
           <AiOutlineMenu
             className={cn("hover:animate-spin", isMobileMenuOpen && "hidden")}
@@ -168,7 +168,7 @@ const Navbar = () => {
         </Transition>
       </nav>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

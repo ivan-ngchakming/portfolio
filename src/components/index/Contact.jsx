@@ -1,5 +1,6 @@
-import cn from "classnames";
-import PageContainer from "./common/PageContainer";
+import React from "react"
+import cn from "classnames"
+import PageContainer from "../common/PageContainer"
 
 const Contact = () => {
   return (
@@ -11,7 +12,7 @@ const Contact = () => {
         Next
       </h2>
     </PageContainer>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

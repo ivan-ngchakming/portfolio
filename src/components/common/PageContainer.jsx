@@ -1,4 +1,5 @@
-import cn from "classnames";
+import cn from "classnames"
+import React from "react"
 
 const PageContainer = ({ children, className, ...props }) => {
   return (
@@ -8,7 +9,6 @@ const PageContainer = ({ children, className, ...props }) => {
         "flex-col",
         "justify-center",
         "items-start",
-        // "h-screen",
         "h-[calc(100vh-82px)]",
         "snap-always",
         "snap-center",
@@ -18,7 +18,7 @@ const PageContainer = ({ children, className, ...props }) => {
     >
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default PageContainer;
+export default PageContainer

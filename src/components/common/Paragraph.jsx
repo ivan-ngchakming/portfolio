@@ -1,4 +1,5 @@
-import cn from "classnames";
+import cn from "classnames"
+import React from "react"
 
 const Paragraph = ({ children }) => (
   <p
@@ -12,6 +13,6 @@ const Paragraph = ({ children }) => (
   >
     {children}
   </p>
-);
+)
 
-export default Paragraph;
+export default Paragraph

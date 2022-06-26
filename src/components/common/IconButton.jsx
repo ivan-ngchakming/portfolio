@@ -1,4 +1,5 @@
-import cn from "classnames";
+import cn from "classnames"
+import React from "react"
 
 const IconButton = ({ children, className, ...props }) => {
   return (
@@ -20,7 +21,7 @@ const IconButton = ({ children, className, ...props }) => {
     >
       {children}
     </button>
-  );
-};
+  )
+}
 
-export default IconButton;
+export default IconButton

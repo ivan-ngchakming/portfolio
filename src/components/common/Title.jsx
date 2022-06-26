@@ -1,4 +1,5 @@
-import cn from "classnames";
+import cn from "classnames"
+import React from "react"
 
 const Title = ({ n, title }) => {
   return (
@@ -15,7 +16,7 @@ const Title = ({ n, title }) => {
       <h2
         className={cn(
           "text-2xl",
-          "text-slate-400",
+          "text-slate-300",
           "font-sans",
           "font-bold",
           "min-w-fit"
@@ -38,7 +39,7 @@ const Title = ({ n, title }) => {
         )}
       ></span>
     </div>
-  );
-};
+  )
+}
 
-export default Title;
+export default Title

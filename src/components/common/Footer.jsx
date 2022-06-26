@@ -1,4 +1,5 @@
-import cn from "classnames";
+import React from "react"
+import cn from "classnames"
 
 const Footer = () => {
   return (
@@ -24,7 +25,7 @@ const Footer = () => {
         </a>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

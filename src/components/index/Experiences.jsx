@@ -1,7 +1,7 @@
-import { useState } from "react";
-import cn from "classnames";
-import PageContainer from "./common/PageContainer";
-import Title from "./common/Title";
+import React, { useState } from "react"
+import cn from "classnames"
+import PageContainer from "../common/PageContainer"
+import Title from "../common/Title"
 
 const TabButton = ({ children, isActive, ...props }) => {
   return (
@@ -21,11 +21,11 @@ const TabButton = ({ children, isActive, ...props }) => {
     >
       {children}
     </button>
-  );
-};
+  )
+}
 
 const Experiences = () => {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(0)
 
   return (
     <PageContainer
@@ -57,6 +57,9 @@ const Experiences = () => {
           </TabButton>
           <TabButton isActive={activeTab === 3} onClick={() => setActiveTab(3)}>
             Prudential
+          </TabButton>
+          <TabButton isActive={activeTab === 4} onClick={() => setActiveTab(4)}>
+            SunLife
           </TabButton>
           <div
             className={cn(
@@ -93,17 +96,52 @@ const Experiences = () => {
               "absolute",
               "border-l",
               "border-slate-600",
-              "h-40",
+              "h-[200px]",
               "hidden",
               "sm:block",
               "translate-x-[1px]"
             )}
           />
         </div>
-        <div className={cn("grow")}>Content</div>
+        <div className={cn("grow", "sm:ml-7", "mt-4", "sm:mt-0")}>
+          <h3
+            className={cn(
+              "font-sans",
+              "text-slate-300",
+              "font-bold",
+              "text-xl"
+            )}
+          >
+            Software Engineer{" "}
+            <a href="#">
+              <span className={cn("text-brightred")}>
+                @
+                <span
+                  className={cn(
+                    "after:bg-brightred",
+                    "relative",
+                    "after:transition-[width]",
+                    "after:duration-300",
+                    "hover:after:w-full",
+                    "after:w-0",
+                    "after:h-[1px]",
+                    "after:absolute",
+                    "after:left-0",
+                    "after:bottom-0"
+                  )}
+                >
+                  Oursky
+                </span>
+              </span>
+            </a>
+          </h3>
+          <h4 className={cn("font-mono", "text-slate-400")}>
+            June - September 2022
+          </h4>
+        </div>
       </div>
     </PageContainer>
-  );
-};
+  )
+}
 
-export default Experiences;
+export default Experiences
