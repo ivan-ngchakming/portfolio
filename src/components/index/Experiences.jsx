@@ -4,6 +4,9 @@ import PageContainer from "../common/PageContainer"
 import Title from "../common/Title"
 import { useStaticQuery, graphql } from "gatsby"
 import { renderDateRange } from "../../utils"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
+import removeComments from "remark-remove-comments"
 
 const TabButton = ({ children, isActive, ...props }) => {
   return (
@@ -97,15 +100,21 @@ const Experiences = () => {
             "sm:flex-col"
           )}
         >
-          {edges.map(({ node }) => (
-            <TabButton
-              key={node.id}
-              isActive={activeTab === node.id}
-              onClick={() => setActiveTab(node.id)}
-            >
-              {node.frontmatter.companyName}
-            </TabButton>
-          ))}
+          {edges
+            .sort(
+              (e1, e2) =>
+                new Date(e2.node.frontmatter.startDate) -
+                new Date(e1.node.frontmatter.startDate)
+            )
+            .map(({ node }) => (
+              <TabButton
+                key={node.id}
+                isActive={activeTab === node.id}
+                onClick={() => setActiveTab(node.id)}
+              >
+                {node.frontmatter.companyName}
+              </TabButton>
+            ))}
           <div
             className={cn(
               "absolute",
@@ -201,11 +210,18 @@ const Experiences = () => {
               activeEntry.frontmatter.endDate
             )}
           </h4>
-          <p
-            className={cn("font-sans", "font-normal", "text-slate-400", "mt-4")}
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm, removeComments]}
+            className={cn(
+              "markdown",
+              "font-sans",
+              "font-normal",
+              "text-slate-400",
+              "mt-4"
+            )}
           >
             {activeEntry.frontmatter.description}
-          </p>
+          </ReactMarkdown>
         </div>
       </div>
     </PageContainer>

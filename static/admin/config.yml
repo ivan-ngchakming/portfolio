@@ -48,7 +48,7 @@ collections:
       - { label: "Company Website", name: "companyUrl", widget: "string" }
       - { label: "Start Date", name: "startDate", widget: "date" }
       - { label: "End Date", name: "endDate", widget: "date" }
-      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Description", name: "description", widget: "markdown" }
       - { label: "Featured Experience", name: "featuredExperience", widget: "boolean" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
