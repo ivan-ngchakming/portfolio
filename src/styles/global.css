@@ -8,10 +8,6 @@
   }
 }
 
-html {
-  @apply scroll-smooth sm:snap-y sm:snap-proximity;
-}
-
 body {
   @apply bg-slate-900;
 }

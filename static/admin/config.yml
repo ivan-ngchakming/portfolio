@@ -65,8 +65,11 @@ collections:
         }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Show Order", name: "order", widget: "number" }
+      - { label: "Description", name: "description", widget: "markdown" }
       - { label: "Featured Post", name: "featuredProject", widget: "boolean" }
       - { label: "Featured Image", name: "featuredImage", widget: image, required: false }
+      - { label: "GitHub", name: "githubUrl", widget: "string", required: false }
+      - { label: "Live Link", name: "liveUrl", widget: "string", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }

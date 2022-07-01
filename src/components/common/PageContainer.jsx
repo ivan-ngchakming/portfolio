@@ -9,9 +9,6 @@ const PageContainer = ({ children, className, ...props }) => {
         "flex-col",
         "justify-center",
         "items-start",
-        "h-[calc(100vh-82px)]",
-        "snap-always",
-        "snap-center",
         className
       )}
       {...props}

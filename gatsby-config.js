@@ -6,6 +6,14 @@ module.exports = {
     siteUrl: `https://ivan0313.tk/`,
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     "gatsby-plugin-postcss",

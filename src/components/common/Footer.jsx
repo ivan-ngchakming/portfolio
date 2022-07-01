@@ -4,14 +4,7 @@ import cn from "classnames"
 const Footer = () => {
   return (
     <footer
-      className={cn(
-        "p-4",
-        "pb-8",
-        "flex",
-        "justify-center",
-        "snap-end",
-        "text-slate-400"
-      )}
+      className={cn("p-4", "pb-8", "flex", "justify-center", "text-slate-400")}
     >
       <div>
         <a

@@ -5,7 +5,7 @@ import PageContainer from "../common/PageContainer"
 
 const Intro = () => {
   return (
-    <PageContainer>
+    <PageContainer className="sm:h-[calc(100vh-122px)] h-[calc(100vh-96px)]">
       <h1 className={cn("text-brightred", "ml-1", "mb-2")}>Hi, my name is</h1>
       <h2
         className={cn(

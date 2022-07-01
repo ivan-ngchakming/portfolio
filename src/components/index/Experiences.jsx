@@ -79,7 +79,7 @@ const Experiences = () => {
     query ExperiencesComponentQuery {
       allMarkdownRemark(
         filter: { frontmatter: { featuredExperience: { eq: true } } }
-        sort: { order: DESC, fields: frontmatter___startDate }
+        sort: { order: DESC, fields: frontmatter___endDate }
       ) {
         edges {
           node {
@@ -114,7 +114,7 @@ const Experiences = () => {
   return (
     <PageContainer
       id="experiences"
-      className={cn("flex", "flex-col", "items-center")}
+      className={cn("flex", "flex-col", "items-center", "mb-20")}
     >
       <Title n={2} title="Where I've Worked" />
       <div
@@ -206,7 +206,8 @@ const Experiences = () => {
             "px-8",
             "sm:ml-7",
             "mt-4",
-            "sm:mt-0"
+            "sm:mt-0",
+            "min-h-[350px]"
           )}
         >
           <h3
