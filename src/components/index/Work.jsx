@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import cn from "classnames"
 import { graphql, useStaticQuery } from "gatsby"
 import GitHubIcon from "../../assets/github.svg"
@@ -10,14 +10,6 @@ const ProjectCard = ({
   isEven,
   frontmatter: { title, description, githubUrl, liveUrl, techs, featuredImage },
 }) => {
-  const [hover, setHover] = useState(false)
-
-  const handleMouseEnter = () => setHover(true)
-  const handleMouseLeave = () => setHover(false)
-
-  useEffect(() => {
-    console.log(hover)
-  }, [hover])
   return (
     <div
       className={cn(
@@ -26,8 +18,6 @@ const ProjectCard = ({
         "sm:bg-transparent sm:shadow-none sm:flex sm:flex-col",
         isEven && "sm:items-end"
       )}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
       <p className="font-mono text-xs font-normal my-3 text-brightred">
         Featured Project

@@ -4,6 +4,7 @@
 
 @layer base {
   html {
+    @apply scroll-smooth;
     font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
   }
 }

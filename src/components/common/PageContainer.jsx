@@ -9,6 +9,8 @@ const PageContainer = ({ children, className, ...props }) => {
         "flex-col",
         "justify-center",
         "items-start",
+        "sm:pt-[122px]",
+        "py-10",
         className
       )}
       {...props}

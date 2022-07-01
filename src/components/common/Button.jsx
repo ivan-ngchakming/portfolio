@@ -1,7 +1,13 @@
 import cn from "classnames"
 import React from "react"
 
-const Button = ({ children, className, Component = "button", ...props }) => {
+const Button = ({
+  children,
+  className,
+  Component = "button",
+  newTab = false,
+  ...props
+}) => {
   return (
     <Component
       className={cn(
@@ -17,6 +23,11 @@ const Button = ({ children, className, Component = "button", ...props }) => {
         "hover:shadow-brightred/80",
         className
       )}
+      {...(newTab &&
+        Component === "a" && {
+          rel: "noopener noreferrer",
+          target: "_blank",
+        })}
       {...props}
     >
       {children}

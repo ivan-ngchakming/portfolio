@@ -47,7 +47,9 @@ const Intro = () => {
         love.
       </p>
 
-      <Button className={cn("mt-4")}>Action</Button>
+      <Button className={cn("mt-4")} Component="a" href="/#about">
+        Learn more
+      </Button>
     </PageContainer>
   )
 }

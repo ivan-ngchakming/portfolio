@@ -6,7 +6,7 @@ import Button from "./Button"
 import IconButton from "./IconButton"
 import { Transition } from "@headlessui/react"
 
-const NavItem = ({ children, href, className, ...props }) => (
+const NavItem = ({ children, href, className, onClick, ...props }) => (
   <li
     className={cn(
       "m-4",
@@ -16,7 +16,9 @@ const NavItem = ({ children, href, className, ...props }) => (
     )}
     {...props}
   >
-    <a href={href}>{children}</a>
+    <a href={href} onClick={onClick}>
+      {children}
+    </a>
   </li>
 )
 
@@ -46,8 +48,6 @@ const Navbar = () => {
     setIsMobileMenuOpen(false)
   }
 
-  const downloadResume = () => {}
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll)
     return () => {
@@ -74,7 +74,7 @@ const Navbar = () => {
           "sm:bg-slate-900/80",
           "top-0",
           "z-50",
-          !show && "-top-28"
+          !show && "sm:-top-28"
         )}
       >
         <a className={cn("grow")} href="/">
@@ -90,22 +90,24 @@ const Navbar = () => {
           />
         </a>
         <ul className={cn("gap-3", "mr-12", "sm:flex", "hidden")}>
-          <NavItem href="#about">
+          <NavItem href="#about" onClick={handleClick}>
             <span className={cn("text-brightred")}>01.</span> About
           </NavItem>
-          <NavItem href="#experiences">
+          <NavItem href="#experiences" onClick={handleClick}>
             <span className={cn("text-brightred")}>02.</span> Experiences
           </NavItem>
-          <NavItem href="#work">
+          <NavItem href="#work" onClick={handleClick}>
             <span className={cn("text-brightred")}>03.</span> Work
           </NavItem>
-          <NavItem href="#contact">
+          <NavItem href="#contact" onClick={handleClick}>
             <span className={cn("text-brightred")}>04.</span> Contact
           </NavItem>
         </ul>
         <Button
           className={cn("m-4", "sm:flex", "hidden")}
-          onClick={downloadResume}
+          Component="a"
+          href="/resume.pdf"
+          newTab
         >
           Resume
         </Button>
@@ -164,7 +166,12 @@ const Navbar = () => {
                 <span className={cn("text-brightred")}>04.</span> Contact
               </NavItem>
             </ul>
-            <Button className={cn("m-4", "sm:flex")} onClick={downloadResume}>
+            <Button
+              className="m-4 sm:flex text-center"
+              Component="a"
+              href="/resume.pdf"
+              newTab
+            >
               Resume
             </Button>
           </div>
