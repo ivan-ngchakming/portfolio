@@ -9,7 +9,7 @@ const About = () => {
   return (
     <PageContainer
       id="about"
-      className={cn("flex", "flex-col", "items-center", "mb-40")}
+      className={cn("flex", "flex-col", "items-center", "mb-20")}
     >
       <Title n={1} title="About Me" />
       <div className="sm:flex">

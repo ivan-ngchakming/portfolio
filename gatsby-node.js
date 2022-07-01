@@ -29,7 +29,11 @@ exports.createSchemaCustomization = ({ actions }) => {
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const defaultTemplate = require.resolve(`./src/templates/default.jsx`)
+  const templates = {
+    default: require.resolve(`./src/templates/default.jsx`),
+    experiences: require.resolve(`./src/templates/experiences.jsx`),
+    projects: require.resolve(`./src/templates/projects.jsx`),
+  }
 
   return graphql(`
     {
@@ -38,6 +42,7 @@ exports.createPages = ({ actions, graphql }) => {
           node {
             frontmatter {
               slug
+              templateKey
             }
           }
         }
@@ -50,9 +55,12 @@ exports.createPages = ({ actions, graphql }) => {
 
     return result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       if (node.frontmatter.slug) {
+        const templateKey = node.frontmatter.templateKey
+        const template = templates[templateKey] ?? templates.default
+
         createPage({
           path: node.frontmatter.slug,
-          component: defaultTemplate,
+          component: template,
           context: {
             slug: node.frontmatter.slug,
           },
