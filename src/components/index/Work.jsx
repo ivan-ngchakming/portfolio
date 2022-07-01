@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import cn from "classnames"
 import { graphql, useStaticQuery } from "gatsby"
 import GitHubIcon from "../../assets/github.svg"
@@ -10,27 +10,49 @@ const ProjectCard = ({
   isEven,
   frontmatter: { title, description, githubUrl, liveUrl, techs, featuredImage },
 }) => {
+  const [hover, setHover] = useState(false)
+
+  const handleMouseEnter = () => setHover(true)
+  const handleMouseLeave = () => setHover(false)
+
+  useEffect(() => {
+    console.log(hover)
+  }, [hover])
   return (
     <div
       className={cn(
-        "p-6 rounded-lg bg-brightred/10 w-full shadow-2xl shadow-black",
-        "sm:bg-transparent sm:shadow-none sm:flex sm:flex-col sm:items-end"
+        "relative overflow-hidden",
+        "p-6 rounded-lg bg-brightred/5 w-full shadow-2xl shadow-black",
+        "sm:bg-transparent sm:shadow-none sm:flex sm:flex-col",
+        isEven && "sm:items-end"
       )}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <p className="font-mono text-xs font-normal my-3 text-brightred">
         Featured Project
       </p>
-      <h2 className="text-slate-200 text-2xl tracking-wider font-sans font-semibold mb-3">
-        {title}
-      </h2>
 
-      <p
-        className={cn("py-5 font-sans text-base text-slate-400", "text-right")}
-      >
-        <ReactMarkdown className="markdown">{description}</ReactMarkdown>
-      </p>
+      <a href={liveUrl ?? githubUrl}>
+        <h2 className="text-slate-200 text-2xl tracking-wider font-sans font-semibold mb-3 hover:text-brightred transition-colors">
+          {title}
+        </h2>
+      </a>
 
-      <ul className="flex gap-2 text-slate-400 text-xs my-3">
+      <div className="sm:bg-slate-900 sm:w-2/3 sm:rounded-md">
+        <p
+          className={cn(
+            "py-5 font-sans text-base text-slate-400 transition-shadow",
+            "sm:px-4 sm:bg-brightred/10",
+            "sm:shadow-black/30 hover:shadow-black/80 sm:shadow-2xl",
+            isEven && "sm:text-right"
+          )}
+        >
+          <ReactMarkdown className="markdown">{description}</ReactMarkdown>
+        </p>
+      </div>
+
+      <ul className="flex gap-2 flex-wrap text-slate-400 text-xs my-3">
         {techs.map(tech => (
           <li key={tech}>{tech}</li>
         ))}
@@ -39,7 +61,7 @@ const ProjectCard = ({
       <div className="mt-6 text-slate-400 flex">
         {githubUrl && (
           <a
-            className="w-6 h-6 mr-4"
+            className="w-6 h-6 mr-4 hover:text-brightred transition-colors"
             href={githubUrl}
             rel="noopener noreferrer"
             aria-label="External Link"
@@ -50,7 +72,7 @@ const ProjectCard = ({
         )}
         {liveUrl && (
           <a
-            className="w-6 h-6 mr-4"
+            className="w-6 h-6 mr-4 hover:text-brightred transition-colors"
             href={liveUrl}
             rel="noopener noreferrer"
             aria-label="External Link"
@@ -59,6 +81,25 @@ const ProjectCard = ({
             <LinkIcon className="w-6 h-6" />
           </a>
         )}
+      </div>
+      <div
+        className={cn(
+          "absolute top-0 -z-10 opacity-20 sm:opacity-100",
+          "sm:bg-brightred",
+          "sm:w-1/2 sm:h-2/3 sm:-translate-y-1/2 sm:top-1/2",
+          "sm:rounded-md overflow-clip",
+          !isEven ? "right-0" : "left-0"
+        )}
+      >
+        <img
+          className={cn(
+            "object-fill transition",
+            hover
+              ? "mix-blend-normal"
+              : "mix-blend-multiply filter brightness-125"
+          )}
+          src={featuredImage}
+        />
       </div>
     </div>
   )
