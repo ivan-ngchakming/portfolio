@@ -71,7 +71,7 @@ const Navbar = () => {
           "bg-slate-900",
           "shadow-lg",
           "shadow-slate-600/10",
-          "sm:bg-transparent",
+          "sm:bg-slate-900/80",
           "top-0",
           "z-50",
           !show && "-top-28"

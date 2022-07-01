@@ -4,10 +4,11 @@ import { graphql, useStaticQuery } from "gatsby"
 import GitHubIcon from "../../assets/github.svg"
 import LinkIcon from "../../assets/link.svg"
 import PageContainer from "../common/PageContainer"
+import ReactMarkdown from "react-markdown"
 
 const ProjectCard = ({
   isEven,
-  frontmatter: { title, description, githubUrl, liveUrl },
+  frontmatter: { title, description, githubUrl, liveUrl, techs, featuredImage },
 }) => {
   return (
     <div
@@ -22,12 +23,17 @@ const ProjectCard = ({
       <h2 className="text-slate-200 text-2xl tracking-wider font-sans font-semibold mb-3">
         {title}
       </h2>
-      <p className="py-5 font-sans text-lg text-slate-400">{description}</p>
+
+      <p
+        className={cn("py-5 font-sans text-base text-slate-400", "text-right")}
+      >
+        <ReactMarkdown className="markdown">{description}</ReactMarkdown>
+      </p>
 
       <ul className="flex gap-2 text-slate-400 text-xs my-3">
-        <li>tech1</li>
-        <li>tech2</li>
-        <li>tech3</li>
+        {techs.map(tech => (
+          <li key={tech}>{tech}</li>
+        ))}
       </ul>
 
       <div className="mt-6 text-slate-400 flex">
@@ -75,6 +81,8 @@ const Work = () => {
               description
               githubUrl
               liveUrl
+              techs
+              featuredImage
             }
           }
         }
@@ -93,7 +101,11 @@ const Work = () => {
 
       <div className="flex flex-col gap-6 my-5 w-full">
         {edges.map((node, index) => (
-          <ProjectCard {...node.node} isEven={index % 2 == 0} />
+          <ProjectCard
+            key={node.node.id}
+            {...node.node}
+            isEven={index % 2 == 0}
+          />
         ))}
       </div>
     </PageContainer>

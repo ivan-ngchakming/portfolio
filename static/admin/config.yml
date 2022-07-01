@@ -72,4 +72,4 @@ collections:
       - { label: "GitHub", name: "githubUrl", widget: "string", required: false }
       - { label: "Live Link", name: "liveUrl", widget: "string", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Technologies", name: "techs", widget: "list" }
