@@ -27,16 +27,19 @@ export default function Template({ data }) {
     frontmatter: { title },
   } = markdownRemark
   return (
-    <>
+    <div className="m-10">
       <Seo title={title} />
+      <a className="pl-1 text-slate-400" href="/">
+        {"<"} Home
+      </a>
       <ReactMarkdown
-        className="markdown m-10"
+        className="markdown"
         remarkPlugins={[remarkGfm, removeComments]}
         renderers={{ code: CodeBlock }}
       >
         {rawMarkdownBody}
       </ReactMarkdown>
-    </>
+    </div>
   )
 }
 

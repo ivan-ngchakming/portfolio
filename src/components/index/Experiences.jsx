@@ -33,7 +33,7 @@ const Experiences = () => {
     query ExperiencesComponentQuery {
       allMarkdownRemark(
         filter: { frontmatter: { featuredExperience: { eq: true } } }
-        sort: { order: DESC, fields: frontmatter___endDate }
+        sort: { order: DESC, fields: frontmatter___startDate }
       ) {
         edges {
           node {

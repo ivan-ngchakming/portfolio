@@ -16,7 +16,10 @@ export default function Template({ data }) {
   return (
     <div className="text-slate-400 m-10">
       <Seo title={`Experience - ${jobTitle} @ ${companyName}`} />
-      <h1 className="font-sans text-slate-200 font-bold text-5xl mb-6">
+      <a className="pl-1" href="/">
+        {"<"} Home
+      </a>
+      <h1 className="font-sans text-slate-200 font-bold text-5xl mb-6 mt-2">
         {jobTitle}{" "}
         <a href={companyUrl}>
           <span className={cn("text-brightred")}>

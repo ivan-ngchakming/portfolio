@@ -9,3 +9,8 @@ description: Bowtie descriptions
 featuredExperience: true
 slug: /experiences/bowtie
 ---
+
+- Took part in the team’s Cycle ritual and contributed to feature flag and A/B
+testing integration, setting up storybook and user onboarding flow enhancements
+- Learned to work in a large team, GitHub workflow, and tools such as Jira, Notion
+and Figma for software development.

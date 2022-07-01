@@ -82,7 +82,7 @@ const ProjectCard = ({
         )}
       >
         <img
-          className={cn("object-cover h-full")}
+          className={cn("object-cover h-full w-full")}
           src={featuredImage.publicURL}
         />
       </div>

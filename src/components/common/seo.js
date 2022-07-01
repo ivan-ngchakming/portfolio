@@ -34,7 +34,7 @@ function Seo({ description, lang, meta, title }) {
         lang,
       }}
       title={title ?? defaultTitle}
-      titleTemplate={defaultTitle ? `%s / ${defaultTitle}` : null}
+      titleTemplate={defaultTitle && title ? `%s / ${defaultTitle}` : null}
       meta={[
         {
           name: `description`,
