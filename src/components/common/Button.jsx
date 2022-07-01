@@ -1,9 +1,9 @@
 import cn from "classnames"
 import React from "react"
 
-const Button = ({ children, className, ...props }) => {
+const Button = ({ children, className, Component = "button", ...props }) => {
   return (
-    <button
+    <Component
       className={cn(
         "px-4",
         "py-2",
@@ -20,7 +20,7 @@ const Button = ({ children, className, ...props }) => {
       {...props}
     >
       {children}
-    </button>
+    </Component>
   )
 }
 

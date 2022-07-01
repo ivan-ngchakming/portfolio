@@ -84,22 +84,14 @@ const ProjectCard = ({
       </div>
       <div
         className={cn(
-          "absolute top-0 -z-10 opacity-20 sm:opacity-100",
+          "absolute top-0 -z-10 opacity-20 sm:opacity-70",
           "sm:bg-brightred",
           "sm:w-1/2 sm:h-2/3 sm:-translate-y-1/2 sm:top-1/2",
           "sm:rounded-md overflow-clip",
           !isEven ? "right-0" : "left-0"
         )}
       >
-        <img
-          className={cn(
-            "object-fill transition",
-            hover
-              ? "mix-blend-normal"
-              : "mix-blend-multiply filter brightness-125"
-          )}
-          src={featuredImage.publicURL}
-        />
+        <img className={cn("object-fill")} src={featuredImage.publicURL} />
       </div>
     </div>
   )
