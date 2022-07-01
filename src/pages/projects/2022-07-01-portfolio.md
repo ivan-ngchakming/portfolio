@@ -12,5 +12,6 @@ techs:
   - gatsby
   - graphql
   - netlifyCMS
+slug: /projects/portfolio
 ---
 My portfolio :)

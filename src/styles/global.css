@@ -23,7 +23,3 @@ body {
 ::-webkit-scrollbar-thumb {
   @apply bg-slate-700 rounded-md;
 }
-
-.markdown a {
-  @apply text-brightred after:bg-brightred relative after:transition-[width] after:duration-300 hover:after:w-full after:w-0 after:h-[1px] after:absolute after:left-0 after:bottom-0;
-}

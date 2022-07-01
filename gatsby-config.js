@@ -32,6 +32,7 @@ module.exports = {
         name: "pages",
       },
     },
+    // `gatsby-plugin-mdx`,
     {
       resolve: "gatsby-transformer-remark",
       options: {

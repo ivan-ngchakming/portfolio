@@ -12,6 +12,7 @@ description: Oursky is a team of talented developers, designers, data
   creations have garnered millions of downloads and awards from the Apple App
   Store and Asia Smart Apps Awards.
 featuredExperience: true
+slug: /experiences/oursky
 ---
 
 <!--StartFragment-->
