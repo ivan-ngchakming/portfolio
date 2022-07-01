@@ -35,7 +35,7 @@ const About = () => {
                 "mr-10"
               )}
             >
-              <li>JavaScript (ES6+)</li>
+              <li>JavaScript</li>
               <li>React</li>
               <li>Node.js</li>
             </ul>
