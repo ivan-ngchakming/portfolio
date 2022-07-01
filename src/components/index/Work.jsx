@@ -98,7 +98,7 @@ const ProjectCard = ({
               ? "mix-blend-normal"
               : "mix-blend-multiply filter brightness-125"
           )}
-          src={featuredImage}
+          src={featuredImage.publicURL}
         />
       </div>
     </div>
@@ -123,7 +123,9 @@ const Work = () => {
               githubUrl
               liveUrl
               techs
-              featuredImage
+              featuredImage {
+                publicURL
+              }
             }
           }
         }

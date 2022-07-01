@@ -15,8 +15,16 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-image`,
     "gatsby-plugin-postcss",
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/static/img`,
+        name: "img",
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -24,8 +32,6 @@ module.exports = {
         name: "pages",
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: "gatsby-transformer-remark",
       options: {
@@ -33,7 +39,7 @@ module.exports = {
           {
             resolve: "gatsby-remark-relative-images",
             options: {
-              name: "uploads",
+              staticFolderName: "static",
             },
           },
           {
@@ -54,6 +60,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
