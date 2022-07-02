@@ -1,7 +1,7 @@
 import cn from "classnames"
 import React from "react"
 
-const Title = ({ n, title }) => {
+const Title = ({ n, title, className }) => {
   return (
     <div
       className={cn(
@@ -10,7 +10,8 @@ const Title = ({ n, title }) => {
         "justify-start",
         "w-full",
         "mb-10",
-        "sm:px-12"
+        "sm:px-12",
+        className
       )}
     >
       <h2

@@ -73,12 +73,10 @@ const Experiences = () => {
       id="experiences"
       className={cn("flex", "flex-col", "items-center", "mb-20")}
     >
-      <Title n={2} title="Where I've Worked" />
       <div
         className={cn(
           "flex",
           "flex-col",
-          "sm:flex-row",
           "items-center",
           "sm:items-start",
           "w-screen",
@@ -87,141 +85,144 @@ const Experiences = () => {
           "sm:min-h-[400px]"
         )}
       >
-        <div
-          className={cn(
-            "flex",
-            "overflow-auto",
-            "w-[90vw]",
-            "pb-1",
-            "relative",
-            "sm:overflow-visible",
-            "sm:min-w-[140px]",
-            "sm:max-w-[140px]",
-            "sm:flex-col"
-          )}
-        >
-          {edges
-            .sort(
-              (e1, e2) =>
-                new Date(e2.node.frontmatter.startDate) -
-                new Date(e1.node.frontmatter.startDate)
-            )
-            .map(({ node }) => (
-              <TabButton
-                key={node.id}
-                isActive={activeTab === node.id}
-                onClick={() => setActiveTab(node.id)}
-              >
-                {node.frontmatter.companyName}
-              </TabButton>
-            ))}
+        <Title n={2} title="Where I've Worked" className="px-4" />
+        <div className="flex flex-col sm:flex-row items-center">
           <div
             className={cn(
-              "absolute",
-              "border-b",
-              "border-brightred",
-              "w-[120px]",
-              "top-10",
-              "left-0",
-              "transition-transform",
-              "duration-300",
-              "sm:hidden"
-            )}
-            style={{
-              transform: `translateX(${tabIndex * 120}px)`,
-            }}
-          />
-          <div
-            className={cn(
-              "absolute",
-              "border-x-2",
-              "border-brightred",
-              "h-10",
-              "transition-transform",
-              "duration-300",
-              "z-10",
-              "hidden",
-              "sm:block"
-            )}
-            style={{
-              transform: `translateY(${tabIndex * 40}px)`,
-            }}
-          />
-          <div
-            className={cn(
-              "absolute",
-              "border-l",
-              "border-slate-600",
-              "h-[200px]",
-              "hidden",
-              "sm:block",
-              "translate-x-[1px]"
-            )}
-          />
-        </div>
-
-        <div
-          className={cn(
-            "grow",
-            "w-screen",
-            "sm:w-auto",
-            "mx-0",
-            "px-8",
-            "sm:ml-7",
-            "mt-4",
-            "sm:mt-0",
-            "min-h-[350px]"
-          )}
-        >
-          <h3
-            className={cn(
-              "font-sans",
-              "text-slate-300",
-              "font-bold",
-              "text-xl"
+              "flex",
+              "overflow-auto",
+              "w-[90vw]",
+              "pb-1",
+              "relative",
+              "sm:overflow-visible",
+              "sm:min-w-[140px]",
+              "sm:max-w-[140px]",
+              "sm:flex-col"
             )}
           >
-            {activeEntry.frontmatter.jobTitle}{" "}
-            <a href={activeEntry.frontmatter.companyUrl}>
-              <span className={cn("text-brightred")}>
-                @
-                <span
-                  className={cn(
-                    "after:bg-brightred",
-                    "relative",
-                    "after:transition-[width]",
-                    "after:duration-300",
-                    "hover:after:w-full",
-                    "after:w-0",
-                    "after:h-[1px]",
-                    "after:absolute",
-                    "after:left-0",
-                    "after:bottom-0"
-                  )}
+            {edges
+              .sort(
+                (e1, e2) =>
+                  new Date(e2.node.frontmatter.startDate) -
+                  new Date(e1.node.frontmatter.startDate)
+              )
+              .map(({ node }) => (
+                <TabButton
+                  key={node.id}
+                  isActive={activeTab === node.id}
+                  onClick={() => setActiveTab(node.id)}
                 >
-                  {activeEntry.frontmatter.companyName}
-                </span>
-              </span>
-            </a>
-          </h3>
-          <h4 className={cn("font-mono", "text-slate-400")}>
-            {renderDateRange(
-              activeEntry.frontmatter.startDate,
-              activeEntry.frontmatter.endDate
-            )}
-          </h4>
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm, removeComments]}
+                  {node.frontmatter.companyName}
+                </TabButton>
+              ))}
+            <div
+              className={cn(
+                "absolute",
+                "border-b",
+                "border-brightred",
+                "w-[120px]",
+                "top-10",
+                "left-0",
+                "transition-transform",
+                "duration-300",
+                "sm:hidden"
+              )}
+              style={{
+                transform: `translateX(${tabIndex * 120}px)`,
+              }}
+            />
+            <div
+              className={cn(
+                "absolute",
+                "border-x-2",
+                "border-brightred",
+                "h-10",
+                "transition-transform",
+                "duration-300",
+                "z-10",
+                "hidden",
+                "sm:block"
+              )}
+              style={{
+                transform: `translateY(${tabIndex * 40}px)`,
+              }}
+            />
+            <div
+              className={cn(
+                "absolute",
+                "border-l",
+                "border-slate-600",
+                "h-[200px]",
+                "hidden",
+                "sm:block",
+                "translate-x-[1px]"
+              )}
+            />
+          </div>
+
+          <div
             className={cn(
-              "markdown",
-              "font-sans",
-              "font-normal",
-              "text-slate-400",
-              "mt-4"
+              "grow",
+              "w-screen",
+              "sm:w-auto",
+              "mx-0",
+              "px-8",
+              "sm:ml-7",
+              "mt-4",
+              "sm:mt-0",
+              "min-h-[350px]"
             )}
           >
-            {activeEntry.frontmatter.description}
-          </ReactMarkdown>
+            <h3
+              className={cn(
+                "font-sans",
+                "text-slate-300",
+                "font-bold",
+                "text-xl"
+              )}
+            >
+              {activeEntry.frontmatter.jobTitle}{" "}
+              <a href={activeEntry.frontmatter.companyUrl}>
+                <span className={cn("text-brightred")}>
+                  @
+                  <span
+                    className={cn(
+                      "after:bg-brightred",
+                      "relative",
+                      "after:transition-[width]",
+                      "after:duration-300",
+                      "hover:after:w-full",
+                      "after:w-0",
+                      "after:h-[1px]",
+                      "after:absolute",
+                      "after:left-0",
+                      "after:bottom-0"
+                    )}
+                  >
+                    {activeEntry.frontmatter.companyName}
+                  </span>
+                </span>
+              </a>
+            </h3>
+            <h4 className={cn("font-mono", "text-slate-400")}>
+              {renderDateRange(
+                activeEntry.frontmatter.startDate,
+                activeEntry.frontmatter.endDate
+              )}
+            </h4>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm, removeComments]}
+              className={cn(
+                "markdown",
+                "font-sans",
+                "font-normal",
+                "text-slate-400",
+                "mt-4"
+              )}
+            >
+              {activeEntry.frontmatter.description}
+            </ReactMarkdown>
+          </div>
         </div>
       </div>
     </PageContainer>

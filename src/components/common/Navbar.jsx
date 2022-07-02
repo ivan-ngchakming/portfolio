@@ -74,7 +74,7 @@ const Navbar = () => {
           "sm:bg-slate-900/80",
           "top-0",
           "z-50",
-          !show && "sm:-top-28"
+          !show && !isMobileMenuOpen && "-top-28"
         )}
       >
         <a className={cn("grow")} href="/">

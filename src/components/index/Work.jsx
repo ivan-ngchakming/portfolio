@@ -119,7 +119,7 @@ const Work = () => {
   `)
 
   return (
-    <PageContainer id="work" className="mb-20">
+    <PageContainer id="work" className="mb-20 sm:mx-10">
       <h2
         className={cn("text-2xl", "text-slate-400", "font-sans", "font-bold")}
       >
