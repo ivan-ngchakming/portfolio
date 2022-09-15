@@ -123,8 +123,8 @@ const Work = () => {
       <h2
         className={cn("text-2xl", "text-slate-400", "font-sans", "font-bold")}
       >
-        <span className={cn("text-brightred", "font-mono")}>03.</span> Some
-        Things I've Built
+        <span className={cn("text-brightred", "font-mono")}>03.</span>
+        {" "}Projects I've Worked On
       </h2>
 
       <div className="flex flex-col gap-6 my-5 w-full">
