@@ -11,7 +11,7 @@ description: >-
   and analysis). 
 
   * Gained hand on VBA coding and excel experiences.
-featuredExperience: true
+featuredExperience: false
 ---
 * Optimized excel VBA asset models and data management tools (consolidation and analysis). 
 * Gained hand on VBA coding and excel experiences.
